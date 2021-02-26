@@ -8,7 +8,7 @@ import ru.netology.authorization.repository.UserRepository;
 
 import java.util.List;
 
-@Service
+//@Service
 public class AuthorizationService {
     UserRepository userRepository;
 
