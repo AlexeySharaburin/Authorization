@@ -7,13 +7,14 @@ import ru.netology.authorization.Authorities;
 import ru.netology.authorization.exception.InvalidCredentials;
 import ru.netology.authorization.exception.UnauthorizedUser;
 import ru.netology.authorization.service.AuthorizationService;
-
 import java.util.List;
 
 @RestController
+//@ResponseBody
 @RequestMapping("/")
 public class AuthorizationController {
-    AuthorizationService service;
+
+    final private AuthorizationService service;
 
     public AuthorizationController(AuthorizationService service) {
         this.service = service;
@@ -26,6 +27,7 @@ public class AuthorizationController {
 
     @ExceptionHandler(InvalidCredentials.class)
     ResponseEntity<String> handle(InvalidCredentials e) {
+        System.out.println("Error 400: " + e.getMessage());
         return new ResponseEntity<>("Error 400: " + e.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
@@ -35,3 +37,4 @@ public class AuthorizationController {
         return new ResponseEntity<>("Error 401: " + e.getMessage(), HttpStatus.UNAUTHORIZED);
     }
 }
+

@@ -6,11 +6,13 @@ import ru.netology.authorization.exception.InvalidCredentials;
 import ru.netology.authorization.exception.UnauthorizedUser;
 import ru.netology.authorization.repository.UserRepository;
 
+
 import java.util.List;
 
-//@Service
+@Service
 public class AuthorizationService {
-    UserRepository userRepository;
+
+    final private UserRepository userRepository;
 
     public AuthorizationService(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -24,6 +26,7 @@ public class AuthorizationService {
         if (isEmpty(userAuthorities)) {
             throw new UnauthorizedUser("Unknown user " + user);
         }
+        System.out.println("OK!");
         return userAuthorities;
     }
 
